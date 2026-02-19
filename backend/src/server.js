@@ -11,7 +11,7 @@ const app = express();
 
 // ── Middleware ──────────────────────────────────────
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,8 +25,8 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// ── Routes (we will add these in Phase 3) ──────────
-// app.use('/api/auth', require('./routes/auth'));
+// ── Routes ──────────────────────────────────────────
+app.use('/api/auth', require('./routes/auth'));
 // app.use('/api/products', require('./routes/products'));
 // app.use('/api/sales', require('./routes/sales'));
 
